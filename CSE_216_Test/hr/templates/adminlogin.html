@@ -1,0 +1,40 @@
+<html>
+{% load static %}
+<head><title>Login</title></head>
+<body align="center">
+<table align="center" style="width:75%">
+<tbody>
+<tr>
+<td>
+<form action="adminhome" align="center" method = "POST">
+{% csrf_token %}
+<h4>Admin Log In</h4>
+<table align="center">
+<tbody>
+<tr>
+<td align="right">
+<label for="username">User ID:</label>
+</td>
+<td align="left">
+<input type="text" id="username" name="username">
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="password">Password:</label>
+</td>
+<td align="left">
+<input type="password" id="password" name="password" >
+</td>
+</tr>
+</tbody>
+</table>
+<br><input align="right" type="submit" value="Login">
+</form>
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

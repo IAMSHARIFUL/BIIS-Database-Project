@@ -1,0 +1,48 @@
+<html>
+{% load static %}
+<head><title>Login</title></head>
+<body align="center" style="background-color:#d9d9d8">
+<table  align="center" style="width:75% border:0">
+<tbody align="center" style="background-color:#eec8a5">
+<img src="{% static 'images/Top Picture.jpg' %}" width="75%" height="300">
+</tbody>
+</table>
+</table>
+<table align="center" style="width:75%">
+<tbody>
+<tr  style="background-color:#eec8a5">
+<td>
+<p align="center">The website is under construction. Every page needs separately logging in to access.</p>
+<form action="home" align="center" method = "POST">
+{% csrf_token %}
+<h4>Log In</h4>
+<table align="center" style="border-color:#990000">
+<tbody>
+<tr>
+<td align="right">
+<label for="username">User ID:</label>
+</td>
+<td align="left">
+<input type="number" id="username" name="username" minlength=7 maxlength=7 style="background-color:#ff7b00;color:#ffff66">
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="password">Password:</label>
+</td>
+<td align="left">
+<input type="password" id="password" name="password" minlength=8 maxlength=32 style="background-color:#ff7b00;color:#ffff66">
+</td>
+</tr>
+</tbody>
+</table>
+<br><input align="right" type="submit" value="Login" style="background-color:#990000;color:white">
+</form>
+<br>
+
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

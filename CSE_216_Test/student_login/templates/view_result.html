@@ -1,0 +1,123 @@
+<html>
+{% load static %}
+<head><title>Result | Level {{lavl}} Term {{tarm}}</title></head>
+<body align="center" style="background-color:#d9d9d8">
+<table  align="center" style="width:75% border:0">
+<tbody align="center" style="background-color:#eec8a5">
+<img src="{% static 'images/Top Picture.jpg' %}" width="75%" height="300">
+</tbody>
+</table>
+</table>
+<table  align="center" border="0" style="width:75%">
+<tbody align="center" style="background-color:#eec8a5">
+<tr style="background-color:#800000">
+<td align="center"><a href="/homepage"><font color="white">Home</font></a></td>
+<td align="center"><a href="/my_courses"><font color="white">Ongoing Courses</font></a></td>
+<td align="center"><a href="/course_registration"><font color="white">Registration</font></a></td>
+<td align="center"><a href="/course_drop"><font color="white">Course Drop</font></a></td>
+<td align="center"><a href="/my_result"><font color="white">Result</font></a></td>
+<td align="center"><a href="/my_advisor"><font color="white">Advisor Info.</font></a></td>
+<td align="center"><a href="/logout"><font color="white">Log out</font></a></td>
+</tr>
+</tbody>
+</table>
+<table align="center" style="width:75%">
+<tbody>
+<tr  style="background-color:#eec8a5">
+<td>
+<p align="center">The website is under construction. Every page needs separately logging in to access.</p>
+
+<table align="center" width="95%">
+
+<tr>
+<td>
+<table align="center">
+<tr>
+<th align="right">Name:</td>
+<td align="left">{{student.name}}</td>
+</tr>
+<tr>
+<th align="right">Department:</td>
+<td align="left">{{student.dept}}</td>
+</tr>
+<tr>
+<th align="right">Student ID:</td>
+<td align="left">{{student.usar}}</td>
+</tr>
+<tr>
+<th align="right">Admission Year:</td>
+<td align="left">{{student.year}}</td>
+</tr>
+<tr>
+<th align="right">Level/Term:</td>
+<td align="left">{{student.lev}}/{{student.ter}}</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+<br>
+<br>
+<h3 align="center">Level {{lavl}} Term {{tarm}}</h3>
+<table border="1" align="center" style="border-color:#990000" width="95%">
+<tr>
+<th align="center"><b style="color:#990000">Course ID</b></td>
+<th align="center"><b style="color:#990000">Course Name</b></td>
+<th align="center"><b style="color:#990000">Credit</b></td>
+<th align="center"><b style="color:#990000">Grade Point</b></td>
+<th align="center"><b style="color:#990000">Grade</b></td>
+
+</tr>
+{% for job in jobs %}
+<tr>
+
+<td align="center">{{job.course_id}}</td>
+<td align="center">{{job.course_name}}</b></td>
+<td align="center">{{job.credit}}</b></td>
+<td align="center">{{job.grade_point}}</b></td>
+<td align="center">{{job.grade}}</td>
+</tr>
+{% endfor %}
+</table>
+<table align="right" width="60%">
+<tr>
+<td align="right" >
+<text style="color:#990000">Total CPGA in this term:</text>
+</td>
+<td align="left" >
+<b>{% for r in res %}{{r.term_cgpa}}{% endfor %}</b>
+</td>
+</tr>
+<tr>
+<td align="right" >
+<text style="color:#990000">Total Credit in this term:</text>
+</td>
+<td align="left" >
+<b>{% for r in res %}{{r.term_credit}}{% endfor %}</b>
+</td>
+</tr>
+<tr>
+<td align="right" >
+<text style="color:#990000">Total CPGA:</text>
+</td>
+<td align="left" >
+<b>{{student.cgpa}}</b>
+</td>
+</tr>
+<tr>
+<td align="right" >
+<text style="color:#990000">Total Credit:</text>
+</td>
+<td align="left" >
+<b>{{student.credit}}</b>
+</td>
+</tr>
+</table>
+<br>
+
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

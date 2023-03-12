@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+</head>
+<body>
+<h1>Jobs</h1>
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>ID</th>
+		<th>name</th>
+    </tr>
+    {% for job in jobs %}
+       <tr>
+           <td>{{job.job_id}}</td>
+           <td>{{job.nam}}</td>
+       </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>

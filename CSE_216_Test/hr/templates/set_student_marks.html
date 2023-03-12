@@ -1,0 +1,27 @@
+<html>
+<head><title>L {{student.lev}} T {{student.ter}}</title></head>
+<body>
+<h3 align="center">{{student.name}}</h3>
+<br>
+<h3 align="center">Level {{student.lev}} Term {{student.ter}}</h4>
+<form align="center" action="marks_are_set" method="POST">
+{% csrf_token %}
+<table border="1" align="center">
+<tr><th>Course ID</th><th>Course Name</th><th>Marks</th><th>Full Marks</th><th>Checkbox</th></tr>
+{% for cl in course_list %}
+<tr>
+
+<td align="center">{{cl.course_id}}</td>
+<td align="center">{{cl.course_name}}</td>
+<td align="center"><input type="number" name="marks[]" id="marks[]" required></td>
+<td align="center">{{cl.full_marks}}</td>
+<td align="center"><input type="checkbox" name="courses[]" id="courses[]" value={{cl.marks_code}} required></td>
+</tr>
+{% endfor %}
+</table>
+<br><input type="submit" value="Set Marks">
+</form>
+</body>
+<br>
+<a href="/go_adminlogout"><font color="black">logout</font></a>
+</html>

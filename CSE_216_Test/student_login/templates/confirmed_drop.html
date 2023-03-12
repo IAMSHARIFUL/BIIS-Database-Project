@@ -1,0 +1,52 @@
+<html>
+{% load static %}
+<head><title>Successful Registration</title></head>
+<body align="center" style="background-color:#d9d9d8">
+<table  align="center" style="width:75% border:0">
+<tbody align="center" style="background-color:#eec8a5">
+<img src="{% static 'images/Top Picture.jpg' %}" width="75%" height="300">
+</tbody>
+</table>
+</table>
+<table  align="center" border="0" style="width:75%">
+<tbody align="center" style="background-color:#eec8a5">
+<tr style="background-color:#800000">
+<td align="center"><a href="/homepage"><font color="white">Home</font></a></td>
+<td align="center"><a href="/my_courses"><font color="white">Ongoing Courses</font></a></td>
+<td align="center"><a href="/course_registration"><font color="white">Registration</font></a></td>
+<td align="center"><a href="/course_drop"><font color="white">Course Drop</font></a></td>
+<td align="center"><a href="/my_result"><font color="white">Result</font></a></td>
+<td align="center"><a href="/my_advisor"><font color="white">Advisor Info.</font></a></td>
+<td align="center"><a href="/logout"><font color="white">Log out</font></a></td>
+</tr>
+</tbody>
+</table>
+<table align="center" style="width:75%">
+<tbody>
+<tr  style="background-color:#eec8a5">
+<td>
+<p align="center">The website is under construction. Every page needs separately logging in to access.</p>
+<h3 align="center">Successfully course dropped!</h3>
+<table border="1" align="center" style="border-color:#990000" width="95%">
+<tr>
+<th align="center"><b style="color:#990000">Course ID</b></td>
+<th align="center"><b style="color:#990000">Course Name</b></td>
+<th align="center"><b style="color:#990000">Course Type</b></td>
+<th align="center"><b style="color:#990000">Credit</b></td>
+</tr>
+{% for cl in course_list %}
+<tr>
+<td align="center">{{cl.course_id}}</td>
+<td align="center">{{cl.course_name}}</td>
+<td align="center">{{cl.course_type}}</td>
+<td align="center">{{cl.credit}}</td>
+</tr>
+{% endfor %}
+</table>
+<br>
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

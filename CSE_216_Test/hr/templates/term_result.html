@@ -1,0 +1,23 @@
+<html>
+<head><title>L {{student.lev}} T {{student.ter}}</title></head>
+<body>
+<h3 align="center">Log In</h3>
+<br>
+<form action="student_marksheet" align="center" method = "POST">
+{% csrf_token %}
+<table align="center" style="border-color:#990000">
+<tbody>
+<tr>
+<td align="right">
+<label for="username">User ID:</label>
+</td>
+<td align="left">
+<input type="number" id="username" name="username" minlength=7 maxlength=7 >
+</td>
+</tr>
+</tbody>
+</table>
+<br><input align="right" type="submit" value="Login">
+</form>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<body>
+<form action="select_course" align="center" method="POST">
+{% csrf_token %}
+<h4>Select</h4>
+<table align="center" style="border-color:#990000">
+<tbody>
+<tr>
+<td align="right">
+<label for="offerer">Offerer:</label>
+</td>
+<td align="left">
+<select name="offerer" id="offerer">
+{% for d in depts %}
+  <option value={{d.dept_id}}>{{d.dept_code}}</option>
+{% endfor %}
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="offeree">Offeree:</label>
+</td>
+<td align="left">
+<select name="offeree" id="offeree">
+{% for d in depts %}
+  <option value={{d.dept_id}}>{{d.dept_code}}</option>
+{% endfor %}
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="level">Level:</label>
+</td>
+<td align="left">
+<select name="level" id="level">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="term">Term:</label>
+</td>
+<td align="left">
+<select name="term" id="term">
+  <option value="1">1</option>
+  <option value="2">2</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+<br><input align="right" type="submit" value="Next">
+</form>
+</body>
+</html>

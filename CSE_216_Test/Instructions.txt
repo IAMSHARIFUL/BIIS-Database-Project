@@ -1,0 +1,123 @@
+Step 1:
+
+1.1 Install django
+1.2 Install cx_oracle
+pip install
+->anaconda 
+conda install
+
+
+Step 2:
+
+2.1 Create your project
+django-admin startproject oracledemo
+
+2.2 Creating an app
+
+2.2.1 Go to project dir and run
+python manage.py startapp hr
+
+2.2.2 Add the app to Installed app in settings.py
+
+
+Step 3:
+Insert Database information ins settings.py
+
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.oracle',
+        'NAME': 'PRANTO', #select * from global_name;
+        'USER': 'hr',
+        'PASSWORD': 'abcd1234',
+        'HOST': 'localhost',
+        'PORT': '1521'
+    }
+}
+
+Step 4:
+write code for
+4.1 models
+class Job(models.Model):
+    job_id = models.CharField(max_length=10,primary_key=True)
+    job_title = models.CharField(max_length=50, null = True)
+    min_salary = models.IntegerField()
+    max_salary = models.IntegerField()
+    class Meta:
+         db_table = "jobs"
+		 
+4.2 views
+from django.shortcuts import render
+from .models import Job
+from django.db import connection
+
+# Create your views here.
+def  list_jobs (request):
+	# cursor = connection.cursor()
+	# sql = "INSERT INTO JOBS VALUES(%s,%s,%s,%s)"
+	# cursor.execute(sql,['NEW_JOB','Something New',4000,8000])
+	# connection.commit()
+	# cursor.close()
+	
+	cursor = connection.cursor()
+	sql = "SELECT * FROM JOBS"
+	cursor.execute(sql)
+	result = cursor.fetchall()
+	
+	# cursor = connection.cursor()
+	# sql = "SELECT * FROM JOBS WHERE MIN_SALARY=%s"
+	# cursor.execute(sql,[4000])
+	# result = cursor.fetchall()
+	
+	
+	
+	cursor.close()
+	dict_result = []
+	
+	for r in result:
+		job_id = r[0]
+		job_title = r[1]
+		min_salary = r[2]
+		max_salary = r[3]
+		row = {'job_id':job_id, 'job_title':job_title, 'min_salary':min_salary, 'max_salary':max_salary}
+		dict_result.append(row)
+	
+	#return render(request,'list_jobs.html',{'jobs' : Job.objects.all()})
+	return render(request,'list_jobs.html',{'jobs' : dict_result})
+
+4.3 html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Jobs</title>
+</head>
+<body>
+<h1>Jobs</h1>
+<table width="100%"  border="1">
+    <tr style="background-color:lightgray">
+        <th>ID</th>
+        <th>Title</th>
+        <th>Min Salary</th>
+        <th>Max Salary</th>
+    </tr>
+    {% for job in jobs %}
+       <tr>
+           <td>{{job.job_id}}</td>
+           <td>{{job.job_title }}</td>
+           <td>{{job.min_salary}}</td>
+           <td>{{job.max_salary}}</td>
+       </tr>
+    {% endfor %}
+
+</table>
+</body>
+</html>
+
+4.4 Add path in url.py
+import hr.views as hr_views
+path('jobs', hr_views.list_jobs)
+
+Step 5:
+Run server
+python manage.py runserver
+http://localhost:8000/jobs

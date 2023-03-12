@@ -1,0 +1,26 @@
+<html>
+<body>
+<form action="get_marksheet" align="center" method="POST">
+{% csrf_token %}
+<h4>Select</h4>
+<table align="center" style="border-color:#990000">
+<tbody>
+<tr>
+<td align="right">
+<label for="course_no">Course:</label>
+</td>
+<td align="left">
+<select name="course_no" id="course_no">
+{% for c in courses %}
+  <option value={{c.course_no}}>{{c.course_id}}: {{c.course_name}}</option>
+{% endfor %}
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+<br><input type="checkbox" name="offered_dept_id" id="offered_dept_id" value={{offered_dept_id}} required>
+<br><input align="right" type="submit" value="Set Marks!">
+</form>
+</body>
+</html>

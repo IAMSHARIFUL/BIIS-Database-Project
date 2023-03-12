@@ -1,0 +1,71 @@
+
+<html>
+{% load static %}
+<head><title>Result</title></head>
+<body align="center" style="background-color:#d9d9d8">
+<table  align="center" style="width:75% border:0">
+<tbody align="center" style="background-color:#eec8a5">
+<img src="{% static 'images/Top Picture.jpg' %}" width="75%" height="300">
+</tbody>
+</table>
+</table>
+<table  align="center" border="0" style="width:75%">
+<tbody align="center" style="background-color:#eec8a5">
+<tr style="background-color:#800000">
+<td align="center"><a href="/homepage"><font color="white">Home</font></a></td>
+<td align="center"><a href="/my_courses"><font color="white">Ongoing Courses</font></a></td>
+<td align="center"><a href="/course_registration"><font color="white">Registration</font></a></td>
+<td align="center"><a href="/course_drop"><font color="white">Course Drop</font></a></td>
+<td align="center"><a href="/my_result"><font color="white">Result</font></a></td>
+<td align="center"><a href="/my_advisor"><font color="white">Advisor Info.</font></a></td>
+<td align="center"><a href="/logout"><font color="white">Log out</font></a></td>
+</tr>
+</tbody>
+</table>
+<table align="center" style="width:75%">
+<tbody>
+<tr  style="background-color:#eec8a5">
+<td>
+<p align="center">The website is under construction. Every page needs separately logging in to access.</p>
+<form action="result" align="center" method="POST">
+{% csrf_token %}
+<h4>Select</h4>
+<table align="center" style="border-color:#990000">
+<tbody>
+<tr>
+<td align="right">
+<label for="level">Level:</label>
+</td>
+<td align="left">
+<select name="level" id="level" style="background-color:#ff7b00;color:#ffff66">
+  <option value="1">1</option>
+  <option value="2">2</option>
+  <option value="3">3</option>
+  <option value="4">4</option>
+  <option value="5">5</option>
+</select>
+</td>
+</tr>
+<tr>
+<td align="right">
+<label for="term">Term:</label>
+</td>
+<td align="left">
+<select name="term" id="term" style="background-color:#ff7b00;color:#ffff66">
+  <option value="1">1</option>
+  <option value="2">2</option>
+</select>
+</td>
+</tr>
+</tbody>
+</table>
+<br><input align="right" type="submit" value="View Result" style="background-color:#990000;color:white">
+</form>
+<br>
+
+</td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>
